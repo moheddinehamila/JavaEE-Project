@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	template="/template/template.xhtml">
+	
+	
+	
+	
+	
+	
+<<<<<<< HEAD
+	
+	<ui:param name="page_name" value="Connexion" />
+
+	<ui:define name="myContent">
+	
+    <div class="col-md-8">
+        <section id="loginForm">
+                <hr>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Email">Email</label>
+                    <div class="col-md-10">
+                        <input class="form-control"  data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Email" name="Email" type="text" value="#{loginBean.email}"></input>
+                        <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Password">Password</label>
+                    <div class="col-md-10">
+                        <input class="form-control" value="#{loginBean.password}" data-val-required="The Password field is required." id="Password" name="Password" type="password"></input>
+                        <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                
+              
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                       <h:commandButton id="btn" value="Connexion" action="#{loginBean.DoLogin()}" class="btn btn-primary btn-sm" />
+                    </div>
+                </div>
+                <p>
+                    <a href="/Account/Register">Register as a new user</a>
+                </p>
+     </section>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            
+<h4>Use another service to log in.</h4>
+<hr>
+<form action="/Account/ExternalLogin" method="post" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="xoG3DWD3_xiM3hEA3dEVOXBwYZe5FNoO_5j1KYyt2Fo_j4WM--iTOg05xFVSjbi6pyMdNMD1RZ-enIO47kCikgnGyj3eHy_5cf2aUKGH5mM1">            <div id="socialLoginList">
+                <p>
+                        <button type="submit" class="btn btn-default" id="Facebook" name="provider" value="Facebook" title="Log in using your Facebook account">Facebook</button>
+                </p>
+            </div>
+</form>
+
+        </section>
+    </div>
+	
+		
+=======
+	<ui:param name="page_name" value="Connexion" />
+
+	<ui:define name="myContent">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2">
+					<div class="pd-hero-text">
+
+						<h2>WELCOME</h2>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<h:graphicImage library="img" name="product-content-bg.jpg" />
+		<br></br>
+		<br></br>
+		<br></br>
+		<center>
+			<h4>Connexion</h4>
+		</center>
+		<br></br>
+
+		<h:form id="form" styleClass="form-horizontal form-center ">
+			<h:panelGrid columns="2" align="center">
+				<h:outputText value="Login (Email)" />
+				<h:inputText value="#{loginBean.login}" class="form-control" />
+				<h:outputText value="Mot de passe" />
+				<h:inputSecret value="#{loginBean.password}" class="form-control" />
+				<center>
+					<h:commandButton id="btn" value="Connexion"
+						action="#{loginBean.doLogin()}" class="btn btn-primary btn-sm" />
+				</center>
+				<h:message for="btn" />
+			</h:panelGrid>
+		</h:form>
+>>>>>>> 05eb23c7ba123e67d2dbbcf0f0071618b4dd7488
+
+
+	</ui:define>
+</ui:composition>

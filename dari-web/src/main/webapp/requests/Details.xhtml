@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"   xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="content">
+	    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="pd-hero-text">
+
+                    <h2>WELCOME</h2>
+                   
+            <h:form>
+			<h5>	<h:outputText	value=" #{loginBean.login}" /> </h5>
+										<h5>	<h:outputText	value=" #{loginBean.role}" /> </h5>
+				
+				<h:commandButton value="Logout" action="#{loginBean.doLogout()}" class="btn btn-primary btn-sm" />
+			</h:form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+	
+
+    <h:graphicImage library="img" name="product-content-bg.jpg" />
+    
+
+   
+   
+
+
+<!-- Property Details Hero Section Begin -->
+<!-- Property Details Section Begin -->
+<section class="property-details-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="pd-details-text">
+               
+
+
+                    <div class="pd-desc">
+
+                        <h4>Description</h4>
+                        <p>
+                            <h:outputText value="#{requestsbean.description}" />
+                        </p>
+                    </div>
+                    <div class="pd-details-tab">
+                        <div class="tab-item">
+                            <ul class="nav" role="tablist">
+                                <li>
+                                    <a class="active" data-toggle="tab" href="#tab-1" role="tab">Overview</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#tab-2" role="tab">Property Info</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#tab-3" role="tab">Location</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#tab-4" role="tab">Phone Number</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="tab-item-content">
+                            <div class="tab-content">
+                                <div class="tab-pane fade-in active" id="tab-1" role="tabpanel">
+                                    <div class="property-more-table">
+                                        <table class="left-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="pt-name">Title</td>
+                                                    <td class="p-value"><h:outputText value="#{requestsbean.title}" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pt-name">My Budget</td>
+                                                    <td class="p-value"><h:outputText value="#{requestsbean.budget}" /> (DT)</td>
+                                                </tr>
+
+
+
+                                                <tr>
+                                                    <td class="pt-name">Added Date</td>
+                                                    <td class="p-value"><h:outputText value="#{requestsbean.date}" /></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-2" role="tabpanel">
+                                    <div class="pd-table-desc">
+                                        <div class="property-more-table">
+                                            <table class="left-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="pt-name">Wanted</td>
+                                                        <td class="p-value"><h:outputText value="BUY"  rendered="#{requestsbean.typeCh ==0}"/>
+								<h:outputText value="RENT"  rendered="#{requestsbean.typeCh ==1}"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="pt-name">Type</td>
+                                                        <td class="p-value"> 	<h:outputText value="S+0" rendered="#{requestsbean.type ==0}"/>
+								<h:outputText value="S+1" rendered="#{requestsbean.type ==1}"/>
+								<h:outputText value="S+2" rendered="#{requestsbean.type ==2}"/>
+								<h:outputText value="S+3" rendered="#{requestsbean.type ==3}"/>
+								<h:outputText value="S+4" rendered="#{requestsbean.type ==4}"/>
+								<h:outputText value="S+Plus" rendered="#{requestsbean.type ==5}"/>
+								<h:outputText value="Villa" rendered="#{requestsbean.type ==6}"/>
+								<h:outputText value="Fond de commerce" rendered="#{requestsbean.type ==7}"/>
+								<h:outputText value="Terrain" rendered="#{requestsbean.type ==8}"/>
+								<h:outputText value="Local" rendered="#{requestsbean.type ==9}"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="pt-name">Area (Metre)</td>
+                                                        <td class="p-value"><h:outputText value="#{requestsbean.area}" /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-3" role="tabpanel">
+                                    <div class="pd-table-desc">
+                                        <div class="property-more-table">
+                                            <table class="left-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="pt-name">Governorat</td>
+                                                        <td class="p-value"><h:outputText value="#{requestsbean.countryIso3}" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="pt-name">Delegation</td>
+                                                        <td class="p-value"><h:outputText value="#{requestsbean.regionCode}" /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-4" role="tabpanel">
+                                    <div class="pd-table-desc">
+
+                                        <p>
+                                            <h:outputText value="#{requestsbean.phone}" />
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+   
+   
+   
+   
+   
+   <div align="center">
+                                               
+   
+   		<h:form>
+									<h:commandButton action="/requests/Index?faces-redirect=true"
+												value="Back to the list" 
+												 class="btn btn-primary btn-sm"
+											/>
+												<h:commandButton action="#{requestsbean.deleteRequest(requestsbean.requestId)}"
+												value="Delete" 
+												 class="btn btn-primary btn-sm"
+												  rendered="#{requestsbean.ver == 1}"
+											/>
+											<h:commandButton action="/requests/Edit?faces-redirect=true"
+												value="Edit" 
+												 class="btn btn-primary btn-sm"
+												 rendered="#{requestsbean.ver == 1}"
+											/>
+									
+								</h:form>
+   
+   
+   </div>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+	</ui:define> 
+</ui:composition> 
+ 

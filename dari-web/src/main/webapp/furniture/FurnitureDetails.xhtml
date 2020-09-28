@@ -1,0 +1,223 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="https://www.primefaces.org/ui"
+	template="/template/template.xhtml">
+
+
+
+	<ui:define name="myContent">
+		<br />
+		<br />
+		<br />
+		<br />
+		<div class="single-property-item">
+			<div class="row" style="align-content: center">
+
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<div class="property-pic">
+
+						<h:graphicImage width="200" height="190"
+							name="images/furniture/#{furnitureBean.furnitureSelected.image}" />
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="property-text">
+
+
+						<h3>
+							<h:outputText value="#{furnitureBean.furnitureSelected.name}" />
+						</h3>
+						<div class="sc-text">
+							<h5>
+								<span> <h:outputText
+										value="#{furnitureBean.furnitureSelected.price}" /> DT
+								</span>
+							</h5>
+						</div>
+						<div class="properties-location">
+							<i class="icon_pin"></i>
+							<h:outputText value="#{furnitureBean.furnitureSelected.address}" />
+						</div>
+						<p>
+							<h:outputText
+								value="#{furnitureBean.furnitureSelected.description}" />
+						</p>
+						<div class="properties-location">
+							Qte=
+							<h:outputText value="#{furnitureBean.furnitureSelected.qte}" />
+						</div>
+
+						<table>
+							<colgroup width="100px">
+							</colgroup>
+							<colgroup width="100px">
+							</colgroup>
+							<colgroup width="100px">
+							</colgroup>
+							<tbody>
+								<tr>
+									<td><i class="fa fa-arrows"
+										style="font-size: 20px; color: aqua"></i>
+										<p>
+											<h:outputText
+												value="#{furnitureBean.furnitureSelected.height}" />
+										</p></td>
+									<td><i class="fa fa-arrows-v"
+										style="font-size: 20px; color: aqua"></i>
+										<p>
+											<h:outputText
+												value="#{furnitureBean.furnitureSelected.depth}" />
+										</p></td>
+									<td><i class="fa fa-arrows-h"
+										style="font-size: 20px; color: aqua"></i>
+										<p>
+											<h:outputText
+												value="#{furnitureBean.furnitureSelected.width}" />
+										</p></td>
+
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+
+				<div class="col-md-3">
+					<div class="property-text">
+						Total Votes:
+						<h:outputText value="#{furnitureBean.furnitureSelected.nbrNote}" />
+						; Rating:
+						<h:outputText value="#{furnitureBean.furnitureSelected.note}" />
+						<h:panelGrid columns="5" cellpadding="5">
+							<c:forEach var="i" begin="1"
+								end="#{furnitureBean.furnitureSelected.note}">
+								<h:graphicImage width="20" height="20"
+									name="images/furniture/star.png" />
+							</c:forEach>
+							<c:if test="#{furnitureBean.furnitureSelected.virgule}">
+								<h:graphicImage width="20" height="20"
+									name="images/furniture/half-star.png" />
+								<c:forEach var="i"
+									begin="#{furnitureBean.furnitureSelected.note+2}" end="5">
+									<h:graphicImage width="20" height="20"
+										name="images/furniture/estar.png" />
+								</c:forEach>
+							</c:if>
+							<c:if test="#{furnitureBean.furnitureSelected.virgule==false}">
+								<c:forEach var="i"
+									begin="#{furnitureBean.furnitureSelected.note+1}" end="5">
+									<h:graphicImage width="20" height="20"
+										name="images/furniture/estar.png" />
+								</c:forEach>
+							</c:if>
+						</h:panelGrid>
+
+ 
+
+
+						<c:if test="#{furnitureBean.isVoted()==false}">
+						Add your vote
+							<h:panelGrid columns="5" cellpadding="5">
+								<c:forEach var="i" begin="1" end="5">
+									<h:form>
+										<h:commandLink action="#{furnitureBean.addvote(i)}">
+											<h:graphicImage width="20" height="20"
+												name="images/furniture/estar.png" />
+										</h:commandLink>
+									</h:form>
+								</c:forEach>
+							</h:panelGrid>
+
+						</c:if>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2">
+				<div class="comment-option">
+					<h4>
+						<h:outputText value="#{furnitureBean.nbrcmnt}" />
+						Comment(s)
+					</h4>
+					<c:forEach items="#{furnitureBean.listc}" var="listcomment"
+						varStatus="status">
+
+						<div class="row">
+							<div class="col-lg-10">
+
+								<div class="single-comment-item second-comment ">
+
+									<c:if
+										test="#{listcomment.userId=='6035cc13-edae-410b-9519-cf799f71990a'}">
+										<div class="sc-author">
+											<h:graphicImage name="images/furniture/ahmed.jpg" />
+										</div>
+									</c:if>
+									<c:if
+										test="#{listcomment.userId!='6035cc13-edae-410b-9519-cf799f71990a'}">
+										<div class="sc-author">
+											<h:graphicImage name="images/furniture/mohamed.jpg" />
+										</div>
+									</c:if>
+
+									<div class="sc-text">
+										<span><h:outputText value="#{listcomment.date}" /></span>
+										<c:if
+											test="#{listcomment.userId=='6035cc13-edae-410b-9519-cf799f71990a'}">
+											<h5>ahmed</h5>
+										</c:if>
+										<c:if
+											test="#{listcomment.userId!='6035cc13-edae-410b-9519-cf799f71990a'}">
+											<h5>mohamed</h5>
+										</c:if>
+
+										<p>
+											<h:outputText value="#{listcomment.message}" />
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-2">
+								<c:if
+									test="#{listcomment.userId=='6035cc13-edae-410b-9519-cf799f71990a'}">
+
+									<h:form>
+										<h:commandButton value="delete"
+											action="#{furnitureBean.delcomment(listcomment.commentId)}">
+										</h:commandButton>
+									</h:form>
+								</c:if>
+							</div>
+						</div>
+					</c:forEach>
+
+
+					<div class="leave-comment">
+						<h4>Leave A Comment</h4>
+						<h:form>
+
+							<h:inputText value="#{furnitureBean.message}"
+								pt:placeholder="Your comment" styleClass="form-control" />
+
+							<h:commandButton value="Comment"
+								action="#{furnitureBean.addcomment()}">
+							</h:commandButton>
+
+						</h:form>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</ui:define>
+</ui:composition>

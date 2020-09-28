@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/template.xhtml">
+	<ui:define name="myContent">
+		<br />
+		<br />
+		<div class="products-show">
+			<div class="row">
+				<div class="container">
+					<div class="col-lg-2"></div>
+					<div class="col-lg-12">
+						<c:forEach items="#{orderBean.allOrders}" var="orderlist"
+							varStatus="status">
+							<div class="search-form-text">
+								<div class="home-text">
+
+									<h:outputText value="#{orderlist.date}" />
+
+									; Price
+									<h:outputText value="#{orderlist.finalprice}" />
+									Dt
+
+								</div>
+							</div>
+
+							<c:forEach items="#{orderlist.furniturelist}" var="flist"
+								varStatus="status">
+								<section class="breadcrumb-section">
+									<div class="container">
+										<div class="row">
+											<div class="col-lg-12">
+												<div class="property-list">
+
+													<div class="single-property-item">
+														<div class="row">
+															<div class="col-md-3">
+																<div>
+																	<h:graphicImage width="150" height="150"
+																		name="images/furniture/#{flist.image}" />
+																</div>
+															</div>
+															<div class="col-md-7">
+																<div class="property-text">
+																	<h5 class="r-title">
+																		<h:outputText value="#{flist.name}" />
+																	</h5>
+																	<div class="room-price">
+																		<h5>
+																			<h:outputText value="#{flist.price}" />
+																			Dt
+																		</h5>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-2">
+																<h:panelGrid columns="5" cellpadding="5">
+																	<c:forEach var="i" begin="1" end="#{flist.note}">
+																		<h:graphicImage width="20" height="20"
+																			name="images/furniture/star.png" />
+																	</c:forEach>
+																	<c:if test="#{flist.virgule}">
+																		<h:graphicImage width="20" height="20"
+																			name="images/furniture/half-star.png" />
+																		<c:forEach var="i" begin="#{flist.note+2}" end="5">
+																			<h:graphicImage width="20" height="20"
+																				name="images/furniture/estar.png" />
+																		</c:forEach>
+																	</c:if>
+																	<c:if test="#{flist.virgule==false}">
+																		<c:forEach var="i" begin="#{flist.note+1}" end="5">
+																			<h:graphicImage width="20" height="20"
+																				name="images/furniture/estar.png" />
+																		</c:forEach>
+																	</c:if>
+																</h:panelGrid>
+
+															</div>
+
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</section>
+							</c:forEach>
+							<br />
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

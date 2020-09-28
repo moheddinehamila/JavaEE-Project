@@ -1,0 +1,250 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+
+
+<ui:define name="myContent">
+
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> a4eef0d1880b2c595c5cb4728b442fea084fe09e
+<div  class="static">
+          
+          
+               
+                    <h3>Complete Form</h3>
+            
+                      
+                      
+                            <label>Subject</label>
+           <h:form>                  
+<<<<<<< HEAD
+                            <h:inputText id="txtSubject"  class="form-control" value="#{rendezvousBean.title}">
+                            
+                            
+                            <f:validateRequired />
+                            </h:inputText>
+                        
+                            <label>Start</label>
+                            
+                                <h:inputText id="txtStart" value="#{rendezvousBean.start}" class="form-control" >
+                                <f:validateRequired />
+                                </h:inputText>
+                           
+=======
+                            <h:inputText id="txtSubject"  class="form-control" value="#{rendezvousBean.title}"></h:inputText>
+                        
+                            <label>Start</label>
+                            
+                                <h:inputText type="text" id="txtStart" value="#{rendezvousBean.start}" class="form-control" />
+                               
+>>>>>>> a4eef0d1880b2c595c5cb4728b442fea084fe09e
+                           
+                        
+
+                        
+                            <label>End</label>
+<<<<<<< HEAD
+                           
+                                <h:inputText id="txtEnd" value="#{rendezvousBean.end}" rows="3" class="form-control" >
+                              <f:validateRequired />
+                              </h:inputText>
+                       
+                        
+                            <label>Description</label>
+                            <h:inputText id="txtDescription" value="#{rendezvousBean.description}" rows="3" class="form-control">
+                            <f:validateRequired />
+                            </h:inputText>
+                        
+                        
+                            <label>the Apponitment state</label>
+                            <h:inputText id="txtColor" value="#{rendezvousBean.color}" rows="3" class="form-control">
+                            <f:validateRequired />
+                            </h:inputText>
+
+                        <h:commandButton id="btnSave"  action="#{rendezvousBean.save()}" 
+=======
+                            
+                                <h:inputText type="text" id="txtEnd" value="#{rendezvousBean.end}"  class="form-control" />
+                              
+                       
+                        
+                            <label>Description</label>
+                            <h:inputText id="txtDescription" value="#{rendezvousBean.description}" rows="3" class="form-control"></h:inputText>
+                        
+                        
+                            <label>the Apponitment state</label>
+                            <h:inputText id="txtColor" value="#{rendezvousBean.color}" rows="3" class="form-control"></h:inputText>
+
+                        <h:commandButton   action="#{rendezvousBean.save()}" 
+>>>>>>> a4eef0d1880b2c595c5cb4728b442fea084fe09e
+                        value="save" class="btn btn-success">
+                         </h:commandButton>
+</h:form>
+                       
+                 
+               
+                
+            
+        
+    </div>
+  
+
+<style>
+div.static {
+  position: relative;
+  left: 30px;
+  
+}
+</style>
+    <script >
+ 
+        $(document).ready(function() {
+
+            var calendar = $('#calendar').fullCalendar({
+                header : {
+                    left : 'prev,next today',
+                    center : 'title',
+                    right : 'month,agendaWeek,agendaDay',
+                    
+                },
+                events: #{rendezvousBean.json},
+                eventClick: function (calEvent, jsEvent, view) {//le click sur l'evenement va t'ouvrir un affichage qui contien plus de détails
+                    selectevent = calEvent;//l'evenement que tu as selectionner
+                    //fonction pour voir les details de l'evenements
+                    //et pour utiliser les fonction remove ou edit
+                    $('#myModal #title').text(calEvent.title);
+                    $('#myModal #id').text(calEvent.id);
+                    var $description = $('<div/>');
+                    $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("MMM-DD-YYYY HH:mm:ss")));
+                    $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("MMM-DD-YYYY HH:mm:ss")));
+                    $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
+                    $description.append($('<p/>').html('<b>ID:</b>' + calEvent.id));
+                    $('#myModal #pDetails').empty().html($description);
+
+                    $('#myModal').modal();
+                },
+                selectable : true,
+               // selectHelper : true,
+                select : function(start, end) {
+                	selectevent = {
+                            eventID: 0,
+                            title: '',
+                            description: '',
+                            start: start,
+                            end: end,
+                            allDay: false,
+                            color: ''
+                        };
+                        //maintenant on fait un appel de la form pour completre l'ajout si
+                        //il est client,buyer on ouvre 1 sinon 2
+                        
+                        openAddEditFormseller();
+                        $('#calendar').fullCalendar('unselect');
+                },
+                editable : true,
+                eventDrop: function (event) {
+                    var data = {
+                        id: event.eventID,
+                        title: event.title,
+                        start: event.start.format('MM/DD/YYYY HH:mm:ss'),
+                        end: event.end.format('MM/DD/YYYY HH:mm:ss'),
+                        description: event.description,
+                        color: event.color
+
+                    };
+
+                }
+               
+            });
+            //le bouton delete
+ //le bouton delete
+            $('#btnDelete').click(function getVars () {
+                if (selectevent != null) {
+                    $('#calendar').fullCalendar('removeEvents', selectevent.id);//jquery pour la supression de calendreier(affichage)
+
+	 $('#calendar').fullCalendar('removeEvents', selectevent.id);
+                    var x =selectevent.id;
+                    document.getElementById("demo").innerHTML=x;             
+					//document.getElementById("formId:x").innerHTML = x;
+                    console.log(document.getElementById('demo').textContent);
+                    $('#myModal').modal('hide');
+                }
+            })
+            
+                        //le bouton edite qui fait invoquer la forme addEditform
+            $('#btnEdit').click(function () {
+                //Open modal dialog for edit event
+                openAddEditForm();
+            })
+            
+
+             //la form de dialog pour l'ajout et l'update le forme a comme id updateevent
+            //pour le buyer ("acheteur")ou le client   la valeur de couleur va etre
+            //automatiquement orangé
+            function openAddEditForm() {
+                if (selectevent != null) {
+                    $('#hdEventID').val(selectevent.id);
+                    $('#txtSubject').val(selectevent.title);
+                    $('#txtStart').val(selectevent.start.format('MM/DD/YYYY HH:mm:ss'));
+                    $('#txtEnd').val(selectevent.end.format('MM/DD/YYYY HH:mm:ss'));
+                    $('#txtDescription').val(selectevent.description);
+                   
+                }
+
+                $('#myModal').modal('hide')
+                $('#updateevent').modal();
+            }
+
+
+            $('#btnSave').click(function () {
+                //verification des champs
+                  //var data
+                    //Prendre les Valeurs depuis le dialogue
+<<<<<<< HEAD
+                   if ($('#txtSubject').val().trim() == "") {
+                        alert('Subject required');
+                        return;
+                    }
+                    if ($('#txtStart').val().trim() == "") {
+                        alert('Start date required');
+                        return;
+                    }
+                    if ($('#txtEnd').val().trim() == "") {
+                        alert('End date required');
+                        return;
+                    }
+                    var startDate = $('#txtStart').val();
+                    var endDate = $('#txtEnd').val();
+                    if (startDate > endDate) {
+                        alert('Invalid end date');
+                        return;
+=======
+                   
+                    
+
+                    if (selectevent.id != null) {
+                       // call function to save data on DB
+                        updateEvent(data);
+                    } else {
+                        //client buyer
+                        saveEvent(data);
+                        alert('succeeed');
+>>>>>>> a4eef0d1880b2c595c5cb4728b442fea084fe09e
+                    }
+
+
+            })
+            
+        });
+    </script>
+
+</ui:define>
+</ui:composition>

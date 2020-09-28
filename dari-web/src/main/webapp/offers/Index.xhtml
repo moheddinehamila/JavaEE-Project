@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"        xmlns:p="http://primefaces.org/ui"
+	  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="content">
+	    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="pd-hero-text">
+
+                    <h2>WELCOME</h2>
+                   
+            <h:form>
+			<h5>	<h:outputText	value=" #{loginBean.login}" /> </h5>
+										<h5>	<h:outputText	value=" #{loginBean.role}" /> </h5>
+				
+				<h:commandButton value="Logout" action="#{loginBean.doLogout()}" class="btn btn-primary btn-sm" />
+			</h:form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <h:graphicImage library="img" name="product-content-bg.jpg" />
+
+
+
+ <div class="top-properties-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="properties-title">
+                        <div class="section-title">
+                            <span>Top Offers for you</span>
+                            <h2>Top Offers</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="top-properties-carousel owl-carousel">
+              
+              
+              <ui:repeat  id="list" var="requests"  value="#{offersbean.requestslist}">
+              <tr>
+								
+   						
+								
+							 <div class="single-top-properties">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="stp-pic">
+		<td>
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget >= 1 and requests.budget le 70000 and requests.typeCh == 0}" library="img" name="buy1.jpg" />
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget > 70000 and requests.budget le 300000 and requests.typeCh == 0}" library="img" name="buy2.jpg" />
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget > 300000 and requests.typeCh == 0}" library="img" name="buy3.jpg" />
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget >= 1 and requests.budget le 300 and requests.typeCh == 1}" library="img" name="rent1.jpg" />
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget > 300  and requests.budget le 1000 and requests.typeCh == 1}" library="img" name="rent2.jpg" />
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget > 1000 and requests.typeCh == 1}" library="img" name="rent3.jpg" />
+   								</td>                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="stp-text">
+                                <div class="s-text">
+                                <h:outputText value="BUY"  rendered="#{requests.typeCh ==0}"/>
+								<h:outputText value="RENT"  rendered="#{requests.typeCh ==1}"/>
+                                
+                                </div>
+                                <h2><h:outputText value="#{requests.title}" /></h2>
+                                <div class="room-price">
+                                    <span>Budget :</span>
+                                    <h4>$<h:outputText value="#{requests.budget}" /></h4>
+                                </div>
+                                <div class="properties-location"><i class="icon_pin"></i> <h:outputText value="#{requests.countryIso3}" /> , <h:outputText value="#{requests.regionCode}" /></div>
+                                <p><h:outputText value="#{requests.description}" /></p>
+                                <ul class="room-features">
+                                    <li>
+                                        <i class="fa fa-arrows"></i>
+                                        <p><h:outputText value="#{requests.area}" /> (Metre)</p>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-bed"></i>
+                                        <p>							   	<h:outputText value="S+0" rendered="#{requests.type ==0}"/>
+								<h:outputText value="S+1" rendered="#{requests.type ==1}"/>
+								<h:outputText value="S+2" rendered="#{requests.type ==2}"/>
+								<h:outputText value="S+3" rendered="#{requests.type ==3}"/>
+								<h:outputText value="S+4" rendered="#{requests.type ==4}"/>
+								<h:outputText value="S+Plus" rendered="#{requests.type ==5}"/>
+								<h:outputText value="Villa" rendered="#{requests.type ==6}"/>
+								<h:outputText value="Fond de commerce" rendered="#{requests.type ==7}"/>
+								<h:outputText value="Terrain" rendered="#{requests.type ==8}"/>
+								<h:outputText value="Local" rendered="#{requests.type ==9}"/></p>
+                                    </li>
+                               <li>
+                                        <i class="fa fa-road"></i>
+                                        <p><h:outputText value="#{requests.distance}" /> (KM)</p>
+                                    </li>
+                                          <li>
+                                        <i class="fa fa-percent"></i>
+                                        <p>Almost <h:outputText value="#{requests.per}" /></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>			
+					
+										
+								</tr>
+             
+           </ui:repeat>
+     
+            </div>
+        </div>
+    </div>
+
+
+
+       <h:graphicImage library="img" name="product-content-bg.jpg" />
+
+   
+	</ui:define> 
+</ui:composition> 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+

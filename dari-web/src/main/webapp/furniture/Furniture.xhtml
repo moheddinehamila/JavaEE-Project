@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="https://www.primefaces.org/ui"
+	template="/template/template.xhtml">
+
+
+
+	<ui:define name="myContent">
+<br/>
+		<div class="property-list">
+
+			<div class="products-show">
+				<div class="row">
+				
+					<c:forEach items="#{furnitureBean.allFurnitures}" var="productList"
+						varStatus="status">
+						<div class="col-lg-4 col-md-6 col-sm-12 col-12">
+							<div class="product-info">
+
+								<h:graphicImage width="200" height="190"
+									name="images/furniture/#{productList.image}" />
+								<h3>
+									<h:outputText value="#{productList.name}" />
+								</h3>
+								<span> <h:outputText value="#{productList.price}" />Dt</span>
+
+							</div>
+							<h:form>
+
+
+
+								<!--product-info end-->
+
+
+
+								<h:panelGrid columns="5" cellpadding="5">
+
+
+
+									<c:forEach var="i" begin="1" end="#{productList.note}">
+
+										<h:graphicImage width="20" height="20"
+											name="images/furniture/star.png" />
+
+									</c:forEach>
+
+
+									<c:if test="#{productList.virgule}">
+										<h:graphicImage width="20" height="20"
+											name="images/furniture/half-star.png" />
+
+
+										<c:forEach var="i" begin="#{productList.note+2}" end="5">
+
+											<h:graphicImage width="20" height="20"
+												name="images/furniture/estar.png" />
+
+ 
+										</c:forEach>
+
+									</c:if>
+
+									<c:if test="#{productList.virgule==false}">
+										<c:forEach var="i" begin="#{productList.note+1}" end="5">
+
+											<h:graphicImage width="20" height="20"
+												name="images/furniture/estar.png" />
+
+
+										</c:forEach>
+
+									</c:if>
+
+
+								</h:panelGrid>
+
+								<h:commandButton value="View Details"
+									action="#{furnitureBean.gotofurniture()}">
+									<f:setPropertyActionListener
+										target="#{furnitureBean.furnitureSelected}"
+										value="#{productList}" />
+									<f:ajax render="@form" />
+								</h:commandButton>
+
+							</h:form>
+						</div>
+
+					</c:forEach>
+
+
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

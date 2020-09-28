@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"   
+     template="/template/template.xhtml"
+                 >
+  <ui:define name="myContent">
+
+
+
+
+
+<div class="col-lg-6" align="center">
+
+                    <div class="row" >
+                        <div class="col-lg-7 offset-lg-1">
+                            <div class="contact-text">
+                                <div class="section-title">
+                                    <span>Update</span>
+                                    <h2>Make a change .</h2>
+                
+                                </div>
+
+
+<h:form id="form2">
+
+  <h:panelGrid columns="2">
+
+<h:panelGrid columns="2">
+	<h:outputText value="Name"  style="font-weight:bold" />
+	<h:inputText value="#{VenteBean.name}" styleClass="form-control" label="Name">
+	</h:inputText>
+</h:panelGrid>
+
+<h:panelGrid columns="2">
+	<h:outputText value="Adress"  style="font-weight:bold" />
+	<h:inputText value="#{VenteBean.adress}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid>
+
+<h:panelGrid columns="2">
+	<h:outputText value="Description"  style="font-weight:bold" />
+	<h:inputText value="#{VenteBean.description}" styleClass="form-control" label="Description">
+	</h:inputText>
+</h:panelGrid>
+
+<!-- 
+<h:panelGrid columns="2">
+	<h:outputText value="Image"  style="font-weight:bold" />
+	<h:inputText value="#{VenteBean.image}" styleClass="form-control" label="Image">
+	</h:inputText>
+</h:panelGrid>
+
+ -->
+
+<h:panelGrid columns="2">
+	<h:outputText value="Price"  style="font-weight:bold" />
+	<h:inputText value="#{VenteBean.price}" styleClass="form-control" label="Price">
+	</h:inputText>
+</h:panelGrid>
+
+<h:panelGrid columns="2">
+	<h:outputText value="depth"  style="font-weight:bold" />
+	<h:inputText value="#{VenteBean.depth}" styleClass="form-control" label="depth">
+	</h:inputText>
+</h:panelGrid>
+<h:panelGrid columns="2">
+	<h:outputText value="Width"  style="font-weight:bold" />
+	<h:inputText value="#{VenteBean.width}" styleClass="form-control" label="Width">
+	</h:inputText>
+</h:panelGrid>
+
+<h:panelGrid columns="2">
+	<h:outputText value="height"  style="font-weight:bold" />
+	<h:inputText value="#{VenteBean.height}" styleClass="form-control" label="height">
+	</h:inputText>
+</h:panelGrid>
+
+
+
+
+<!-- 
+<h:panelGrid columns="2">
+	<h:outputText value="parent"  style="font-weight:bold" />
+	<h:inputText value="#{ReunionPriveBean.parent}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid>
+
+<h:panelGrid columns="2">
+	<h:outputText value="directeur"  style="font-weight:bold" />
+	<h:inputText value="#{ReunionPriveBean.directeur}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid> -->
+<br/>
+<h:commandButton action="#{VenteBean.UpdateAnnonceVente(Ventebean.venteId)}" value="Modifier"/>	
+
+
+</h:panelGrid>
+</h:form>	
+
+
+</div>
+                        </div>
+                    </div>
+                </div>
+
+
+		</ui:define>
+
+</ui:composition>

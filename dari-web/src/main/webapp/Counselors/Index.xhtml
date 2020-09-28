@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="https://www.primefaces.org/ui"
+	template="/template/template.xhtml">
+
+
+
+	<ui:define name="myContent">
+	
+	    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="pd-hero-text">
+
+                    <h2>WELCOME</h2>
+                   
+         
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <h:graphicImage library="img" name="product-content-bg.jpg" />
+    <br></br><br></br><br></br><center><h4>Counselor List</h4></center><br></br>
+    
+  
+<table class="footable table table-stripped toggle-arrow-tiny"
+						data-page-size="15">
+						<thead>
+							<tr>
+							<th>Image</th>
+							<th>FirstName</th>
+							<th>LastName</th>
+							<th>Phone Number</th>
+							<th>Address</th>		
+							<th>City</th>
+							<th>Country</th>	
+							<th>Appointment</th>				
+							</tr>
+						</thead>
+						
+						<tbody>
+							<ui:repeat  id="list" var="counselor"  value="#{counselorBean.counselorslist}">
+								<tr>
+								
+								
+   								<td>
+   								
+   								<h:graphicImage height="100" width="100" name="images/counselors/#{counselor.image}"/>
+   								</td>
+								
+								<td><h:outputText value="#{counselor.firstName}" /></td>
+							
+								
+								<td><h:outputText value="#{counselor.lastName}" /></td>
+								
+								
+								<td><h:outputText value="#{counselor.phoneNumber}" /></td>
+							     
+							 
+							  	<td><h:outputText value="#{counselor.address}" /></td>
+								
+															
+								<td><h:outputText value="#{counselor.city}" /></td>
+								<td><h:outputText value="#{counselor.country}" /></td>
+													
+								<td> 
+								<h:form>
+									<h:form>
+									<h:commandButton action="#{counselorBean.displayRequests(counselor)}"
+												value="Display" 
+												 class="btn btn-primary btn-sm"
+											/>
+									</h:form>
+									</h:form>
+								</td>
+								</tr>
+							</ui:repeat>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="13">
+									<ul class="pagination float-right"></ul>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+
+
+
+   
+	</ui:define> 
+</ui:composition> 
+ 

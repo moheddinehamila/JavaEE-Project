@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 		 xmlns:p="http://primefaces.org/ui"
+	   xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="content">
+
+	 
+	 
+  <link rel="stylesheet" href="../resources/plugins/fontawesome-free/css/all.min.css" />
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+  <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
+	 
+	 
+	
+	
+	
+	    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="pd-hero-text">
+
+                    <h2>WELCOME</h2>
+                   
+                
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <h:graphicImage library="img" name="product-content-bg.jpg" />
+    <br></br><br></br><br></br><center><h4>Statistics</h4></center><br></br>
+    
+   		
+			
+	<h:form id="form">
+		<center> <h:commandButton action="#{statbean.sendsms()}"	value="Suggestion SMS Inbox"  class="btn btn-primary btn-sm" /> </center>
+
+	</h:form>
+
+	    
+
+	    
+		       <center><h5 class="mt-4 mb-2">All Requests </h5></center> 
+		        <br></br>
+		        		       <center><h5 class="mt-4 mb-2"> <h:outputText	value=" #{statbean.all}" />	 </h5></center> 
+		        
+        <div class="row">
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-info">
+              <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">In Biz</span>
+                <span class="info-box-number"><h:outputText	value=" #{statbean.country_all1}" /></span>
+                <div class="progress">
+                  <div class="progress-bar" style="width: 	 #{statbean.per_country_all1}%"></div>
+                </div>
+                <span class="progress-description">
+                  <h:outputText	value=" #{statbean.per_country_all1}" />%
+                </span>
+              </div>
+            </div>
+          </div>
+          <br></br>
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-success">
+              <span class="info-box-icon"><i class="far fa-thumbs-up"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">In Ben</span>
+                <span class="info-box-number"><h:outputText	value=" #{statbean.country_all2}" /></span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: #{statbean.per_country_all2}%"></div>
+                </div>
+                <span class="progress-description">
+                  <h:outputText	value=" #{statbean.per_country_all2}" />%
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-warning">
+              <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Buy</span>
+                <span class="info-box-number"><h:outputText	value=" #{statbean.typech_all1}" /></span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: #{statbean.per_typech_all1}%"></div>
+                </div>
+                <span class="progress-description">
+                  <h:outputText	value=" #{statbean.per_typech_all1}" />% 
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-danger">
+              <span class="info-box-icon"><i class="fas fa-comments"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Rent</span>
+                <span class="info-box-number"><h:outputText	value=" #{statbean.typech_all2}" /></span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: #{statbean.per_typech_all2}%"></div>
+                </div>
+                <span class="progress-description">
+                  <h:outputText	value=" #{statbean.per_typech_all2}" />% 
+                </span>
+              </div>
+            </div>
+          </div>
+          
+
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	  <center><h5 class="mt-4 mb-2">My Requests </h5></center> 
+		        <br></br>
+		        		       <center><h5 class="mt-4 mb-2"> <h:outputText	value=" #{statbean.usr}" />	 </h5></center> 
+		        
+        <div class="row">
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-info">
+              <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">In Biz</span>
+                <span class="info-box-number"><h:outputText	value=" #{statbean.country_usr1}" /></span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: 	 #{statbean.per_country_usr1}%"></div>
+                </div>
+                <span class="progress-description">
+                  <h:outputText	value=" #{statbean.per_country_usr1}" />%
+                </span>
+              </div>
+            </div>
+          </div>
+          <br></br>
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-success">
+              <span class="info-box-icon"><i class="far fa-thumbs-up"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">In Ben</span>
+                <span class="info-box-number"><h:outputText	value=" #{statbean.country_usr2}" /></span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: #{statbean.per_country_usr2}%"></div>
+                </div>
+                <span class="progress-description">
+                  <h:outputText	value=" #{statbean.per_country_usr2}" />%
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-warning">
+              <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Buy</span>
+                <span class="info-box-number"><h:outputText	value=" #{statbean.typech_usr1}" /></span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: #{statbean.per_typech_usr1}%"></div>
+                </div>
+                <span class="progress-description">
+                  <h:outputText	value=" #{statbean.per_typech_usr1}" />% 
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-danger">
+              <span class="info-box-icon"><i class="fas fa-comments"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Rent</span>
+                <span class="info-box-number"><h:outputText	value=" #{statbean.typech_usr2}" /></span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: #{statbean.per_typech_usr2}%"></div>
+                </div>
+                <span class="progress-description">
+                  <h:outputText	value=" #{statbean.per_typech_usr2}" />% 
+                </span>
+              </div>
+            </div>
+          </div>
+          
+
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<script src="../resources/plugins/jquery/jquery.min.js"></script>
+<script src="../resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../resources/dist/js/adminlte.min.js"></script>
+<script src="../ressources/dist/js/demo.js"></script>
+
+
+
+   
+	</ui:define> 
+</ui:composition> 
+ 

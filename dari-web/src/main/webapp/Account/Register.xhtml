@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 		 xmlns:p="http://primefaces.org/ui"
+	   xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="content">
+	    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="pd-hero-text">
+
+                    <h2>WELCOME</h2>
+                    
+                
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <h:graphicImage library="img" name="product-content-bg.jpg" />
+    <br></br><br></br><br></br><center><h4>Register</h4></center><br></br>
+    
+   			<h:form id="form" styleClass="form-horizontal form-center "  >
+				<h:panelGrid columns="2" align="center" >
+				    <h:outputText value="firstname" />
+					<h:inputText value="#{loginBean.firstName}" class="form-control" />
+					<h:outputText value="LastName" />
+					<h:inputText value="#{loginBean.lastName}" class="form-control" />
+					<h:outputText value="email" />
+					<h:inputText value="#{loginBean.email}" class="form-control" />
+					<h:outputText value="Password" />
+					<h:inputSecret value="#{loginBean.password}" class="form-control" />
+					<h:outputText value="ConfirmPassword" />
+					<h:inputSecret value="#{loginBean.confirmpassword}" class="form-control" />
+					<h:outputText value="Phone Number" />
+					<h:inputText value="#{loginBean.phoneNumber}" class="form-control" />
+					<h:outputText value="Country" />
+					<h:inputText value="#{loginBean.country}" class="form-control" />
+				<center>	<h:commandButton id="btn" value="Connexion" action="#{loginBean.DoRegister()}" class="btn btn-primary btn-sm" />
+					</center><h:message for="btn"/>
+				</h:panelGrid>
+			</h:form> 
+
+   
+	</ui:define> 
+</ui:composition> 
+ 

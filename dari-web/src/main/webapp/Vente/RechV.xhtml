@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+     
+       
+       xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="https://www.primefaces.org/ui"
+	template="/template/template.xhtml">
+       
+       
+       
+      
+
+	<ui:define name="myContent">
+	 
+<h:form >
+
+	
+	<br/>
+	
+	
+	
+	Name :
+	
+	<form>
+	<p:inputText value="#{VenteBean.search}"></p:inputText>
+	<h:commandButton action="#{VenteBean.Get()}" value="Chercher"/>
+</form>
+ 
+ 
+ 
+<div class="property-list">
+                        <div class="single-property-item">
+                        
+                        
+                        
+                         
+                        <c:forEach items="#{VenteBean.GetAll()}" var="productList"
+						varStatus="status">
+                        
+                        <div class="products-show">
+                        
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="property-pic">
+                                         <h:graphicImage width="100" height="100"
+									name="images/Vente/images.jpg" />
+							
+                                    </div>
+                                </div>
+                               <div class="col-md-8">
+                                    <div class="property-text">
+                                        <div class="s-text">For Sale</div>
+                                        <h5 class="r-title"><h:outputText value="#{productList.name}" /></h5>
+                                        <div class="room-price">
+                                            <span>Start From:</span>
+                                            <h5> <h:outputText value="#{productList.price}" />Dt</h5>
+                                        </div>
+                                        <div class="properties-location"><i class="icon_pin"></i> <h:outputText value="#{productList.adress}" /></div>
+                                        <p><h:outputText value="#{productList.description}" /></p>
+                                        <ul class="room-features">
+                                         <!--   <li>
+                                                <i class="fa fa-arrows"></i>
+                                                <p><h:outputText value="#{productList.height}" /></p>
+                                            </li> -->
+
+
+
+                                           <li>
+                                                <i class="fa fa-arrows"></i>
+                                                <p><h:outputText value="#{productList.width}" /></p>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-arrows"></i>
+                                                <p><h:outputText value="#{productList.depth}" /></p>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            
+                            <div></div>
+                             
+                             
+                             <br/>
+                             
+                                <h:form >
+                              <h:commandButton icon="ui-icon-cancel" action="#{VenteBean.redirectUpdate(productList.venteId)}" title="Update" value="Update" ></h:commandButton>
+                             
+                              
+                            
+								  	 <h:commandButton icon="ui-icon-cancel" action="#{VenteBean.DeleteReunionprive(productList.venteId)}" title="Delete" value="Delete" ></h:commandButton>
+									</h:form>
+                              
+                             <br/>
+                            </c:forEach>
+                           
+                        </div>
+                        
+                        </div>
+                    
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+	</h:form>
+	
+		</ui:define>
+	
+</ui:composition>

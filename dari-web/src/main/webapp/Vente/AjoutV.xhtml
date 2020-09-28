@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+           xmlns:b="http://bootsfaces.net/ui"
+    template="/template/template.xhtml"
+    >
+    <ui:define name="myContent">
+    
+
+
+<div class="col-lg-6" align="center">
+
+                    <div class="row" >
+                        <div class="col-lg-7 offset-lg-1">
+                            <div class="contact-text">
+                                <div class="section-title">
+                                    <span>Add</span>
+                                    <h2>New Announce</h2>
+                
+                                </div>
+
+
+<h:form id="form">
+<h:panelGrid columns="2">
+
+<h:outputText value="Name : " /> <h:inputText value="#{VenteBean.name}" />
+<h:outputText value="Adresse  : " /> <h:inputText value="#{VenteBean.adress}" />
+<h:outputText value="Description :" /> <h:inputText value="#{VenteBean.description}" />
+<h:outputText value="Price :" /> <h:inputText value="#{VenteBean.price}" />
+
+<h:outputText value="Image " /> <h:inputText value="Already chosen"  />
+
+
+ 
+
+
+
+
+<h:outputText value="Height :" /> <h:inputText value="#{VenteBean.height}" />
+<h:outputText value="Width :" /> <h:inputText value="#{VenteBean.width}" />
+<h:outputText value="Depth :" /> <h:inputText value="#{VenteBean.depth}" />
+
+
+ 
+
+
+<h:commandButton value="Add" action="#{VenteBean.AjoutAnnonceVente()}" ></h:commandButton> <br/>
+<!-- <p:commandButton value="List" action="#{ReunionPriveBean.IndexGetAllReunionprive()}" ></p:commandButton>  -->
+
+</h:panelGrid>
+
+</h:form>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+</ui:define>
+		
+</ui:composition>

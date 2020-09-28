@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 		 xmlns:p="http://primefaces.org/ui"
+	   xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="content">
+	
+	    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="pd-hero-text">
+
+                    <h2>WELCOME</h2>
+                   
+            <h:form>
+			<h5>	<h:outputText	value=" #{loginBean.login}" /> </h5>
+						<h5>	<h:outputText	value=" #{loginBean.role}" /> </h5>
+			
+				
+				<h:commandButton value="Logout" action="#{loginBean.doLogout()}" class="btn btn-primary btn-sm" />
+			</h:form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <h:graphicImage library="img" name="product-content-bg.jpg" />
+    <br></br><br></br><br></br><center><h4>Requests List</h4></center><br></br>
+    
+    
+    <h:form> 
+    <h:selectOneRadio value="#{requestsbean.radioval}">
+   	<f:selectItem itemValue="C" itemLabel="All" />
+   	<f:selectItem itemValue="B" itemLabel="Rent" />
+   	<f:selectItem itemValue="A" itemLabel="Buy" />
+</h:selectOneRadio>
+  
+  <h:outputText value="Title" /> <h:inputText value="#{requestsbean.titles}" class="form-control" />
+  <h:outputText value="Min" /> <h:inputText value="#{requestsbean.mins}" class="form-control" />
+  <h:outputText value="Max" /> <h:inputText value="#{requestsbean.maxs}" class="form-control" />
+
+  
+   <h:commandButton id="btn" value="Search" action="#{requestsbean.searchRequest()}" class="btn btn-primary btn-sm" /> <h:message for="btn"/>
+   
+								
+									</h:form>
+
+    
+    		<center>	<h:form>
+									<h:commandButton action="/requests/Create?faces-redirect=true"
+												value="Create New Request" 
+												 class="btn btn-primary btn-sm"
+											/>
+									</h:form></center><br></br><br></br>
+<table class="footable table table-stripped toggle-arrow-tiny"
+						data-page-size="15">
+						<thead>
+							<tr>
+							<th>Image</th>
+							<th>Title</th>
+							<th>TypeCh</th>
+							<th>Budget (DT)</th>
+							<th>Type</th>		
+							<th>Date</th>
+							<th>Country</th>	
+							<th>Details</th>				
+							</tr>
+						</thead>
+						
+						<tbody>
+							<ui:repeat  id="list" var="requests"  value="#{requestsbean.requestslist}">
+								<tr>
+								
+   								<td>
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget >= 1 and requests.budget le 70000 and requests.typeCh == 0}" library="img" name="buy1.jpg" />
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget > 70000 and requests.budget le 300000 and requests.typeCh == 0}" library="img" name="buy2.jpg" />
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget > 300000 and requests.typeCh == 0}" library="img" name="buy3.jpg" />
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget >= 1 and requests.budget le 300 and requests.typeCh == 1}" library="img" name="rent1.jpg" />
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget > 300  and requests.budget le 1000 and requests.typeCh == 1}" library="img" name="rent2.jpg" />
+   								<h:graphicImage height="100" width="100" rendered="#{requests.budget > 1000 and requests.typeCh == 1}" library="img" name="rent3.jpg" />
+   								</td>
+								
+								<td><h:outputText value="#{requests.title}" /></td>
+							
+								<td>
+								<h:outputText value="BUY"  rendered="#{requests.typeCh ==0}"/>
+								<h:outputText value="RENT"  rendered="#{requests.typeCh ==1}"/>
+								</td>
+								
+								<td><h:outputText value="#{requests.budget}" /></td>
+							     
+							   	<td>
+							   	<h:outputText value="S+0" rendered="#{requests.type ==0}"/>
+								<h:outputText value="S+1" rendered="#{requests.type ==1}"/>
+								<h:outputText value="S+2" rendered="#{requests.type ==2}"/>
+								<h:outputText value="S+3" rendered="#{requests.type ==3}"/>
+								<h:outputText value="S+4" rendered="#{requests.type ==4}"/>
+								<h:outputText value="S+Plus" rendered="#{requests.type ==5}"/>
+								<h:outputText value="Villa" rendered="#{requests.type ==6}"/>
+								<h:outputText value="Fond de commerce" rendered="#{requests.type ==7}"/>
+								<h:outputText value="Terrain" rendered="#{requests.type ==8}"/>
+								<h:outputText value="Local" rendered="#{requests.type ==9}"/>
+								</td>
+															
+								<td><h:outputText value="#{requests.date}" /></td>
+								<td><h:outputText value="#{requests.countryIso3}" /></td>
+													
+									<td>
+									<h:form>
+									<h:commandButton action="#{requestsbean.displayRequests(requests)}"
+												value="Display" 
+												 class="btn btn-primary btn-sm"
+											/>
+									</h:form>
+									</td>
+										
+								</tr>
+							</ui:repeat>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="13">
+									<ul class="pagination float-right"></ul>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+
+
+
+   
+	</ui:define> 
+</ui:composition> 
+ 
